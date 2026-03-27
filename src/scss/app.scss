@@ -1,0 +1,23 @@
+/* Base */
+@use 'base/normalize';
+@use 'base/variables' as *;
+@use 'base/mixins';
+@use 'base/globales';
+@use 'base/utilidades';
+@use 'base/botones';
+@use 'base/darkMode';
+
+/* Layout */
+@use 'layout/header';
+@use 'layout/footer';
+@use 'layout/navegacion';
+@use 'layout/iconos';
+@use 'layout/anuncios';
+@use 'layout/contactar';
+@use 'layout/inferior';
+@use 'layout/testimoniales';
+
+/* Páginas Internas */
+@use 'internas/nosotros';
+@use 'internas/contacto';
+@use 'internas/admin';

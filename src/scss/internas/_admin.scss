@@ -1,0 +1,59 @@
+@use '../base/variables' as *;
+
+.alerta {
+    padding: 1rem;
+    text-align: center;
+    color: white;
+    margin: 1rem 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.8rem;
+    border-radius: 1rem;
+
+    &.error {
+        background-color: $rojo;
+    }
+
+    &.exito {
+        background-color: $verde;
+    }
+}
+
+table.propiedades {
+    margin-top: 4rem;
+    width: 100%;
+    border-spacing: 0;
+
+    thead {
+        background-color: $verde;
+        
+        th {
+            color: $blanco;
+            padding: 2rem;
+            text-align: center;
+        }
+    }
+
+    tbody {
+
+        tr {
+            td {
+                padding: 2rem;
+                border-bottom: 1px solid $grisOscuro;
+                text-align: center;
+            }
+        }
+    }
+
+
+    .imagen-tabla {
+        width: 20rem;
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+.imagen-small {
+    width: 20rem;
+    margin-bottom: 2rem;
+}

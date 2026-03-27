@@ -1,0 +1,24 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+@use 'sass:math';
+
+.footer {
+    background-color: $grisOscuro;
+    padding: math.div($separacion, 2) 0;
+    margin-bottom: 0;
+
+    .contenido-footer {
+        padding-top: math.div($separacion, 2);
+    }
+
+    .navegacion {
+        visibility: visible;
+        opacity: 1;
+        height: auto;
+    }
+
+    .copyright {
+        color: $blanco;
+        text-align: center;
+    }
+}
