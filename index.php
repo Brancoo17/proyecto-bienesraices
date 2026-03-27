@@ -1,4 +1,7 @@
 <?php
+
+    // Commit Prueba
+    
     require 'includes/app.php';
     incluirTemplate('header', $inicio = true); 
 ?>
