@@ -156,6 +156,13 @@ class ActiveRecord {
         return $resultado;
     }
 
+    // Obtiene un número limitado de registros
+    public static function get($limite) {
+        $query = "SELECT * FROM " . static::$tabla . " LIMIT {$limite}";
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+
     // Busca un registro por su ID
     public static function find($id) {
         $query = "SELECT * FROM " . static::$tabla . " WHERE id = {$id}";
