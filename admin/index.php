@@ -1,9 +1,9 @@
 <?php
 
     require '../includes/app.php';
-
     estaAutenticado();
 
+    // Importar clases
     use App\Propiedad;
     use App\Vendedor;
 
@@ -16,11 +16,14 @@
 
     // Eliminar propiedad
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        // Validar el ID
         $id = $_POST['id'];
         $id = filter_var($id, FILTER_VALIDATE_INT);
 
         if($id) {
 
+            // Validar el tipo
             $tipo = $_POST['tipo'];
 
             if(validarTipoContenido($tipo)) {
@@ -44,16 +47,11 @@
     <main class="contenedor seccion">
         <h1>Administrador de Bienes Raices</h1>
 
-        <?php if(intval($resultado) === 1): ?>
-            <p class="alerta exito">Propiedad creada correctamente</p>
-        <?php endif; ?>
-
-        <?php if(intval($resultado) === 2): ?>
-            <p class="alerta exito">Propiedad actualizada correctamente</p>
-        <?php endif; ?>
-
-        <?php if(intval($resultado) === 3): ?>
-            <p class="alerta exito">Propiedad eliminada correctamente</p>
+        <?php 
+            $mensaje = obtenerMensaje(intval($resultado));
+            if($mensaje): 
+        ?>
+            <p class="alerta exito"><?php echo s($mensaje); ?></p>
         <?php endif; ?>
 
         <a href="/admin/propiedades/crear.php" class="boton boton-verde">Nueva Propiedad</a>

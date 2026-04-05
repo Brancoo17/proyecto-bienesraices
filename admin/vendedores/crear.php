@@ -14,9 +14,8 @@
     // Ejecutar el código cuando el usuario envia el formulario
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        // Asignar los atributos del vendedor
-        $args = $_POST['vendedor'];
-        $vendedor->sincronizar($args);
+        // Crear una nueva instancia de vendedor
+        $vendedor = new Vendedor($_POST['vendedor']);
 
         // Validar
         $errores = $vendedor->validar();
