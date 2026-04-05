@@ -28,3 +28,9 @@ function debug($variable) {
 function s($html) : string {
     return htmlspecialchars($html ?? '');
 }
+
+// Validar tipo de Contenido
+function validarTipoContenido($tipo) {
+    $tipos = ['vendedor', 'propiedad'];
+    return in_array($tipo, $tipos);
+}
