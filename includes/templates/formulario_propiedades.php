@@ -34,13 +34,11 @@
 <fieldset>
     <legend>Vendedor</legend>
 
-    <!--
-    <select name="vendedorId">
+    <select name="propiedad[vendedorId]" id="vendedor">
         <option value="" disabled selected>-- Seleccione --</option>
-        <?php while($vendedor = mysqli_fetch_assoc($resultado)): ?>
-            <option <?php echo $propiedad->vendedorId === $vendedor['id'] ? 'selected' : ''; ?> value="<?php echo s($propiedad->vendedorId); ?>">
-            <?php echo $vendedor['nombre'] . " " . $vendedor['apellido']; ?></option>
-        <?php endwhile; ?>
+        <?php foreach($vendedores as $vendedor): ?>
+            <option <?php echo $propiedad->vendedorId === $vendedor->id ? 'selected' : ''; ?> value="<?php echo s($vendedor->id); ?>">
+            <?php echo s($vendedor->nombre) . " " . s($vendedor->apellido); ?></option>
+        <?php endforeach; ?>
     </select>
-    -->
 </fieldset>

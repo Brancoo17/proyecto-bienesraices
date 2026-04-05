@@ -1,6 +1,7 @@
 <?php
 
     use App\Propiedad;
+    use App\Vendedor;
     require '../../includes/app.php';
     use Intervention\Image\Drivers\Gd\Driver;
     use Intervention\Image\ImageManager as Image;
@@ -15,15 +16,11 @@
         header("Location: /admin");
     }
 
-    // Base de Datos
-    $db = conectarDB();
-
     // Obtener los datos de la propiedad
     $propiedad = Propiedad::find($id);
 
     // Consultar para obtener los vendedores
-    $consulta = "SELECT * FROM vendedores";
-    $resultado = mysqli_query($db, $consulta);
+    $vendedores = Vendedor::all();
 
     // Arreglo con mensajes de errores
     $errores = Propiedad::getErrores();

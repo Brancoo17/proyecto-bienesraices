@@ -119,44 +119,12 @@ class ActiveRecord {
 
     // Validación
     public static function getErrores() {
-        return self::$errores;
+        return static::$errores;
     }
 
     public function validar() {
-
-        if(!$this->titulo) {
-            self::$errores[] = "Debes añadir un título";
-        }
-
-        if(!$this->precio) {
-            self::$errores[] = "Debes añadir un precio";
-        }
-
-        if(strlen($this->descripcion) < 30) {
-            self::$errores[] = "Debes añadir una descripción de al menos 30 caracteres";
-        }
-
-        if(!$this->habitaciones) {
-            self::$errores[] = "Debes añadir el número de habitaciones";
-        }
-
-        if(!$this->wc) {
-            self::$errores[] = "Debes añadir el número de baños";
-        }
-
-        if(!$this->estacionamiento) {
-            self::$errores[] = "Debes añadir el número de estacionamientos";
-        }
-
-        if(!$this->vendedorId) {
-            self::$errores[] = "Debes añadir un vendedor";
-        }
-
-        if(!$this->imagen) {
-            self::$errores[] = "La imagen es obligatoria";
-        } 
-
-        return self::$errores;
+        static::$errores = [];
+        return static::$errores;
     }
 
     public function setImagen($imagen) {
@@ -202,7 +170,7 @@ class ActiveRecord {
         // Iterar los resultados
         $array = [];
         while($registro = $resultado->fetch_assoc()) {
-            $array[] = self::crearObjeto($registro);
+            $array[] = static::crearObjeto($registro);
         }
 
         // Liberar la memoria
