@@ -34,6 +34,10 @@ class Propiedad extends ActiveRecord {
 
     public function validar() {
 
+        // Sanitizar espacios en blanco
+        $this->titulo = trim($this->titulo);
+        $this->descripcion = trim($this->descripcion);
+
         if(!$this->titulo) {
             self::$errores[] = "Debes añadir un título";
         }
