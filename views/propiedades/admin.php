@@ -14,6 +14,7 @@
 
     <a href="/propiedades/crear" class="boton boton-verde">Nueva Propiedad</a>
     <a href="/vendedores/crear" class="boton boton-azul">Nuevo Vendedor</a>
+    <a href="/blogs/crear" class="boton boton-violeta">Nuevo Blog</a>
 
     <h2>Propiedades</h2>
 

@@ -1,27 +1,15 @@
-<?php
+<div class="contenedor-anuncios">
+    <?php foreach($propiedades as $propiedad) : ?>
+    <div class="anuncio">
+        <picture>
+            <img loading="lazy" src="/imagenes/<?php echo $propiedad->imagen; ?>" alt="anuncio">
+        </picture>
 
-    require 'includes/app.php';
-    use App\Propiedad;
-
-    $id = $_GET['id'];
-    $id = filter_var($id, FILTER_VALIDATE_INT);
-
-    if(!$id) {
-        header('Location: /');
-    }
-
-    $propiedad = Propiedad::find($id);
-
-    incluirTemplate('header');
-?>
-
-    <main class="contenedor seccion contenido-centrado">
-        <h1><?php echo $propiedad->titulo; ?></h1>
-
-        <img loading="lazy" src="/imagenes/<?php echo $propiedad->imagen; ?>" alt="Imagen de la Propiedad">
-
-        <div class="resumen-propiedad">
+        <div class="contenido-anuncio">
+            <h3><?php echo $propiedad->titulo; ?></h3>
+            <p><?php echo $propiedad->descripcion; ?></p>
             <p class="precio">$<?php echo $propiedad->precio; ?></p>
+
             <ul class="iconos-caracteristicas">
                 <li>
                     <img class="icono" src="build/img/icono_wc.svg" alt="icono wc" loading="lazy">
@@ -37,14 +25,9 @@
                 </li>
             </ul>
 
-            <p><?php echo $propiedad->descripcion; ?></p>
+            <a href="/propiedad?id=<?php echo $propiedad->id; ?>" class="boton-amarillo">VER PROPIEDAD</a>
 
-        </div>
-
-        <a href="/anuncios.php" class="boton-verde">Volver</a>
-
-    </main>
-
-<?php
-    incluirTemplate('footer');
-?>
+        </div><!--.contenido-anuncio-->
+    </div><!--.anuncio-->
+    <?php endforeach; ?>
+</div><!--.contenedor-anuncios-->

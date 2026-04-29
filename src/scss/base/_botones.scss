@@ -26,3 +26,8 @@
   @include boton($azul, inline-block);
   margin-left: 2rem;
 }
+
+.boton-violeta {
+  @include boton($violeta, inline-block);
+  margin-left: 2rem;
+}

@@ -1,7 +1,3 @@
-<?php
-    require 'includes/app.php';
-    incluirTemplate('header'); 
-?>
 
     <main class="contenedor seccion contenido-centrado">
         <h1>Nuestro Blog</h1>
@@ -16,7 +12,7 @@
                 </div>
 
                 <div class="texto-entrada">
-                    <a href="entrada.php">
+                    <a href="/entrada">
                         <h4>Terraza en el techo de tu casa</h4>
                         <p class="info-meta">Escrito el: <span>20/2/2026</span> por: <span>Admin</span></p>
 
@@ -38,7 +34,7 @@
                 </div>
 
                 <div class="texto-entrada">
-                    <a href="entrada.php">
+                    <a href="/entrada">
                         <h4>Construye una pileta en tu hogar</h4>
                         <p class="info-meta">Escrito el: <span>20/2/2026</span> por: <span>Admin</span></p>
 
@@ -60,7 +56,7 @@
                 </div>
 
                 <div class="texto-entrada">
-                    <a href="entrada.php">
+                    <a href="/entrada">
                         <h4>Guía para la decoración de tu hogar</h4>
                         <p class="info-meta">Escrito el: <span>20/2/2026</span> por: <span>Admin</span></p>
 
@@ -82,7 +78,7 @@
                 </div>
 
                 <div class="texto-entrada">
-                    <a href="entrada.php">
+                    <a href="/entrada">
                         <h4>Guía para la decoración de tu habitación</h4>
                         <p class="info-meta">Escrito el: <span>20/2/2026</span> por: <span>Admin</span></p>
 
@@ -94,7 +90,3 @@
                 </div>
             </article>
     </main>
-
-<?php
-    incluirTemplate('footer');
-?>
