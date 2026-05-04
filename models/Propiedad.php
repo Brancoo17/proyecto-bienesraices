@@ -4,22 +4,22 @@ namespace Model;
 
 class Propiedad extends ActiveRecord {
 
-    protected static $tabla = 'propiedades';
-    protected static $columnasDB = ['id', 'titulo', 'precio', 'imagen', 'descripcion', 'habitaciones', 'wc', 'estacionamiento', 'creado', 'vendedorId'];
+    protected static string $tabla = 'propiedades';
+    protected static array $columnasDB = ['id', 'titulo', 'precio', 'imagen', 'descripcion', 'habitaciones', 'wc', 'estacionamiento', 'creado', 'vendedorId'];
 
     // Atributos
-    public $id;
-    public $titulo;
-    public $precio;
-    public $imagen;
-    public $descripcion;
-    public $habitaciones;
-    public $wc;
-    public $estacionamiento;
-    public $creado;
-    public $vendedorId;
+    public ?int $id;
+    public string $titulo;
+    public string $precio;
+    public string $imagen;
+    public string $descripcion;
+    public string $habitaciones;
+    public string $wc;
+    public string $estacionamiento;
+    public string $creado;
+    public string $vendedorId;
 
-    public function __construct($args = []) {
+    public function __construct(array $args = []) {
         $this->id = $args['id'] ?? null;
         $this->titulo = $args['titulo'] ?? '';
         $this->precio = $args['precio'] ?? '';
@@ -34,6 +34,8 @@ class Propiedad extends ActiveRecord {
 
     public function validar() {
 
+        self::$errores = [];
+        
         // Sanitizar espacios en blanco
         $this->titulo = trim($this->titulo);
         $this->descripcion = trim($this->descripcion);

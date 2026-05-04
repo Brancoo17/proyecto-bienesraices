@@ -7,15 +7,15 @@ class Router {
     public array $rutasGet = [];
     public array $rutasPost = [];
 
-    public function get($url, $fn) {
+    public function get(string $url, callable $fn): void {
         $this->rutasGet[$url] = $fn;
     }
 
-    public function post($url, $fn) {
+    public function post(string $url, callable $fn): void {
         $this->rutasPost[$url] = $fn;
     }
 
-    public function comprobarRutas() {
+    public function comprobarRutas(): void {
        $urlActual = $_SERVER['PATH_INFO'] ?? '/';
        $metodo = $_SERVER['REQUEST_METHOD'];
 
@@ -36,7 +36,7 @@ class Router {
     }
 
     // Muestra una vista 
-    public function render($view, $datos = []) {
+    public function render(string $view, array $datos = []): void {
 
         ob_start(); // Almacenamiento en memoria durante un momento...
 

@@ -1,3 +1,8 @@
+<?php
+/** @var string|null $resultado */
+/** @var \Model\Propiedad[] $propiedades */
+/** @var \Model\Vendedor[] $vendedores */
+?>
 <main class="contenedor seccion">
     <h1>Administrador de Bienes Raices</h1>
 

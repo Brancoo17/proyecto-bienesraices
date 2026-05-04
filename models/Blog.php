@@ -5,26 +5,28 @@ namespace Model;
 class Blog extends ActiveRecord {
 
     protected static $tabla = 'blogs';
-    protected static $columnasDB = ['id', 'titulo', 'imagen', 'descripcion', 'creado', 'vendedorId'];
+    protected static $columnasDB = ['id', 'titulo', 'imagen', 'descripcion', 'creado', 'nombreCreador'];
 
-    public $id;
-    public $titulo;
-    public $imagen;
-    public $descripcion;
-    public $creado;
-    public $vendedorId;
+    public ?int $id;
+    public string $titulo;
+    public string $imagen;
+    public string $descripcion;
+    public string $creado;
+    public string $nombreCreador;
 
-    public function __construct($args = []) {
+    public function __construct(array $args = []) {
         $this->id = $args['id'] ?? null;
         $this->titulo = $args['titulo'] ?? '';
         $this->imagen = $args['imagen'] ?? '';
         $this->descripcion = $args['descripcion'] ?? '';
         $this->creado = $args['creado'] ?? date('Y/m/d');
-        $this->vendedorId = $args['vendedorId'] ?? '';
+        $this->nombreCreador = $args['nombreCreador'] ?? '';
     }
 
     public function validar() {
 
+        self::$errores = [];
+        
         // Sanitizar espacios en blanco
         $this->titulo = trim($this->titulo);
         $this->descripcion = trim($this->descripcion);
@@ -44,6 +46,10 @@ class Blog extends ActiveRecord {
         if(!$this->imagen) {
             self::$errores[] = "La imagen es obligatoria";
         } 
+
+        if(!$this->nombreCreador) {
+            self::$errores[] = "Debes añadir el nombre del creador";
+        }
 
         return self::$errores;
     }

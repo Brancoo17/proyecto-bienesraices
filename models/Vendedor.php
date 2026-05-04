@@ -3,16 +3,16 @@
 namespace Model;
 
 class Vendedor extends ActiveRecord {
-    protected static $tabla = 'vendedores';
-    protected static $columnasDB = ['id', 'nombre', 'apellido', 'telefono'];
+    protected static string $tabla = 'vendedores';
+    protected static array $columnasDB = ['id', 'nombre', 'apellido', 'telefono'];
 
     // Atributos
-    public $id;
-    public $nombre;
-    public $apellido;
-    public $telefono;
+    public ?int $id;
+    public string $nombre;
+    public string $apellido;
+    public string $telefono;
 
-    public function __construct($args = []) {
+    public function __construct(array $args = []) {
         $this->id = $args['id'] ?? null;
         $this->nombre = trim($args['nombre'] ?? '');
         $this->apellido = trim($args['apellido'] ?? '');
@@ -20,12 +20,15 @@ class Vendedor extends ActiveRecord {
     }
 
     public function validar() {
+
+        self::$errores = [];
+        
         // Sanitizar espacios en blanco
         $this->nombre = trim($this->nombre);
         $this->apellido = trim($this->apellido);
         $this->telefono = trim($this->telefono);
 
-        if(!$this->nombre) {
+        if(!$this->nombre) {    
             self::$errores[] = "El nombre es obligatorio";
         } elseif(!preg_match('/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$/', $this->nombre)) {
             self::$errores[] = "El nombre solo debe contener letras";

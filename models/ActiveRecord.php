@@ -16,20 +16,21 @@ namespace Model;
  * @property string $nombre
  * @property string $apellido
  * @property string $telefono
+ * @property string $nombreCreador
  */
 
 class ActiveRecord {
     
     // Base de Datos
-    protected static $db;
-    protected static $columnasDB = [];
-    protected static $tabla = '';
+    protected static \mysqli $db;
+    protected static array $columnasDB = [];
+    protected static string $tabla = '';
 
     // Errores
-    protected static $errores = [];
+    protected static array $errores = [];
 
     // Definir la conexión a la base de datos
-    public static function setDB($database) {
+    public static function setDB(\mysqli $database): void {
         self::$db = $database;
     }
 
@@ -127,7 +128,7 @@ class ActiveRecord {
         return static::$errores;
     }
 
-    public function setImagen($imagen) {
+    public function setImagen(string $imagen): void {
 
         // Elimina la imagen previa
         if(!is_null($this->id)) {
@@ -157,20 +158,20 @@ class ActiveRecord {
     }
 
     // Obtiene un número limitado de registros
-    public static function get($limite) {
+    public static function get(int $limite): array {
         $query = "SELECT * FROM " . static::$tabla . " LIMIT {$limite}";
         $resultado = self::consultarSQL($query);
         return $resultado;
     }
 
     // Busca un registro por su ID
-    public static function find($id) {
+    public static function find(int $id): static {
         $query = "SELECT * FROM " . static::$tabla . " WHERE id = {$id}";
         $resultado = self::consultarSQL($query);
         return array_shift($resultado);
     }
 
-    public static function consultarSQL($query) {
+    public static function consultarSQL(string $query): array {
         // Consultar la base de datos
         $resultado = self::$db->query($query);
         
@@ -187,7 +188,7 @@ class ActiveRecord {
         return $array;
     }
 
-    protected static function crearObjeto($registro) {
+    protected static function crearObjeto(array $registro): static {
         $objeto = new static;
 
         foreach($registro as $key => $value) {
@@ -200,7 +201,7 @@ class ActiveRecord {
     }
 
     // Sincronizar con el objeto en memoria con los cambios realizados por el usuario
-    public function sincronizar($args = []) {
+    public function sincronizar(array $args = []): void {
         foreach($args as $key => $value) {
             if(property_exists($this, $key) && !is_null($value)) {
                 $this->$key = $value;
