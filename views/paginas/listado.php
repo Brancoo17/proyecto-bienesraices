@@ -1,3 +1,7 @@
+<?php
+/** @var array<\Model\Propiedad> $propiedades */
+?>
+
 <div class="contenedor-anuncios">
     <?php foreach($propiedades as $propiedad) : ?>
     <div class="anuncio">

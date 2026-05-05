@@ -5,12 +5,13 @@ namespace Model;
 class Blog extends ActiveRecord {
 
     protected static $tabla = 'blogs';
-    protected static $columnasDB = ['id', 'titulo', 'imagen', 'descripcion', 'creado', 'nombreCreador'];
+    protected static $columnasDB = ['id', 'titulo', 'imagen', 'descripcion', 'texto', 'creado', 'nombreCreador'];
 
     public ?int $id;
     public string $titulo;
     public string $imagen;
     public string $descripcion;
+    public string $texto;
     public string $creado;
     public string $nombreCreador;
 
@@ -19,6 +20,7 @@ class Blog extends ActiveRecord {
         $this->titulo = $args['titulo'] ?? '';
         $this->imagen = $args['imagen'] ?? '';
         $this->descripcion = $args['descripcion'] ?? '';
+        $this->texto = $args['texto'] ?? '';
         $this->creado = $args['creado'] ?? date('Y/m/d');
         $this->nombreCreador = $args['nombreCreador'] ?? '';
     }
@@ -30,6 +32,7 @@ class Blog extends ActiveRecord {
         // Sanitizar espacios en blanco
         $this->titulo = trim($this->titulo);
         $this->descripcion = trim($this->descripcion);
+        $this->texto = trim($this->texto);
 
         if(!$this->titulo) {
             self::$errores[] = "Debes añadir un título";
@@ -41,6 +44,10 @@ class Blog extends ActiveRecord {
 
         if(strlen($this->descripcion) < 30) {
             self::$errores[] = "Debes añadir una descripción de al menos 30 caracteres";
+        }
+
+        if(strlen($this->texto) < 50) {
+            self::$errores[] = "Debes añadir un texto de al menos 50 caracteres";
         }
 
         if(!$this->imagen) {
