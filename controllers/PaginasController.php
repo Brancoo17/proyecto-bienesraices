@@ -52,7 +52,11 @@ class PaginasController {
 
     public static function contacto(Router $router) {
 
+        $mensaje = null;
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $respuestas = $_POST['contacto'];
             
             // Crear una nueva instancia de PHPMailer
             $mail = new PHPMailer();
@@ -76,21 +80,48 @@ class PaginasController {
             $mail->CharSet = 'UTF-8';
             
             // Contenido del correo
-            $contenido = "<html> <p>Tienes un Nuevo Mensaje</p> </html> ";
+            $contenido = '<html>'; 
+            $contenido .= '<h1>Tienes un Nuevo Mensaje</h1> '; 
+            $contenido .= '<p>Nombre: ' . $respuestas['nombre'] . '</p>';
+
+            // Lógica para email o telefono
+            if ($respuestas['metodo'] === 'telefono') {
+                // Para telefono
+                $contenido .= '<p>Método de Contacto: ' . $respuestas['metodo'] . '</p>';
+                $contenido .= '<p>Teléfono: ' . $respuestas['telefono'] . '</p>';
+                $contenido .= '<p>Fecha: ' . $respuestas['fecha'] . '</p>';
+                $contenido .= '<p>Hora: ' . $respuestas['hora'] . '</p>';
+            } else {
+                // Para email
+                $contenido .= '<p>Método de Contacto: ' . $respuestas['metodo'] . '</p>';
+                $contenido .= '<p>Email: ' . $respuestas['email'] . '</p>';
+            }
+
+            $contenido .= '<p>Mensaje: ' . $respuestas['mensaje'] . '</p>';
+            $contenido .= '<p>Vende o Compra: ' . $respuestas['tipo'] . '</p>';
+            
+            // Mostrar precio si existe
+            if ($respuestas['precio']) {
+                $contenido .= '<p>Precio o Presupuesto: $ ' . $respuestas['precio'] . '</p>';
+            }
+            
+            $contenido .= '</html>';
 
             $mail->Body = $contenido;
             $mail->AltBody = "Tienes un mensaje";
 
             // Enviar el correo
             if ($mail->send()) {
-                echo "Mensaje enviado correctamente";
+                $mensaje = "Mensaje enviado correctamente";
             } else {
-                echo "El mensaje no se pudo enviar";
+                $mensaje = "El mensaje no se pudo enviar";
             }
             
             
         }
 
-        $router->render('paginas/contacto', []);
+        $router->render('paginas/contacto', [
+            'mensaje' => $mensaje
+        ]);
     }
 }
