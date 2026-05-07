@@ -6,7 +6,8 @@
 
     if(!isset($inicio)) {
         $inicio = false;
-    } 
+    }
+    $contenido = $contenido ?? ''; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +38,7 @@
                         <a href="/blog">Blog</a>
                         <a href="/contacto">Contacto</a>
                         <?php if($auth): ?>
-                            <a href="/admin">Administrar</a>
+                            <a href="/admin">Admin</a>
                             <a href="/logout">Cerrar Sesión</a>
                         <?php else: ?>
                             <a href="/login">Iniciar Sesión</a>
