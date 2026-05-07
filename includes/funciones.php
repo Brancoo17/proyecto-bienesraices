@@ -1,7 +1,7 @@
 <?php
 
 define('TEMPLATES_URL', __DIR__ . '/templates');
-define('FUNCIONES_URL', __DIR__ . 'funciones.php');
+define('FUNCIONES_URL', __DIR__ . '/funciones.php');
 define('CARPETA_IMAGENES', $_SERVER['DOCUMENT_ROOT'] . '/imagenes/');
 
 function incluirTemplate(string $nombre, bool $inicio = false) {
@@ -32,7 +32,7 @@ function s($html) : string {
 
 // Validar tipo de Contenido
 function validarTipoContenido($tipo) {
-    $tipos = ['vendedor', 'propiedad'];
+    $tipos = ['vendedor', 'propiedad', 'blog'];
     return in_array($tipo, $tipos);
 }
 

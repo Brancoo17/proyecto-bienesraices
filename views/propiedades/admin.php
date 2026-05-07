@@ -91,7 +91,7 @@ use Model\Blog;
         </tbody>
     </table>
 
-    <h2>Blogs</h2>
+    <h2>Entradas de Blog</h2>
 
     <table class="propiedades">
         <thead>

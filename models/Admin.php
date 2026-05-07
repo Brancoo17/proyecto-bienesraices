@@ -21,7 +21,9 @@ class Admin extends ActiveRecord {
     }
 
     public function validar(): array {
-        
+
+        self::$errores = [];
+
         if(!$this->email) {
             self::$errores[] = 'El email es obligatorio';
         }
