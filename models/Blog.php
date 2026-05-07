@@ -4,8 +4,8 @@ namespace Model;
 
 class Blog extends ActiveRecord {
 
-    protected static $tabla = 'blogs';
-    protected static $columnasDB = ['id', 'titulo', 'imagen', 'descripcion', 'texto', 'creado', 'nombreCreador'];
+    protected static string $tabla = 'blogs';
+    protected static array $columnasDB = ['id', 'titulo', 'imagen', 'descripcion', 'texto', 'creado', 'nombreCreador'];
 
     public ?int $id;
     public string $titulo;

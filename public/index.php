@@ -7,6 +7,7 @@ use Controllers\PropiedadController;
 use Controllers\VendedorController;
 use Controllers\PaginasController;
 use Controllers\LoginController;
+use Controllers\BlogController;
 
 $router = new Router();
 
@@ -40,5 +41,12 @@ $router->post('/vendedores/crear', [VendedorController::class, 'crear']);
 $router->get('/vendedores/actualizar', [VendedorController::class, 'actualizar']);
 $router->post('/vendedores/actualizar', [VendedorController::class, 'actualizar']);
 $router->post('/vendedores/eliminar', [VendedorController::class, 'eliminar']);
+
+// Ruta de los blogs
+$router->get('/blogs/crear', [BlogController::class, 'crear']);
+$router->post('/blogs/crear', [BlogController::class, 'crear']);
+$router->get('/blogs/actualizar', [BlogController::class, 'actualizar']);
+$router->post('/blogs/actualizar', [BlogController::class, 'actualizar']);
+$router->post('/blogs/eliminar', [BlogController::class, 'eliminar']);
 
 $router->comprobarRutas();

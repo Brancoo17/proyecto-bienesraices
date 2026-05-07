@@ -1,48 +1,24 @@
 <?php
 
 namespace Controllers;
-use MVC\Router;
-use Model\Propiedad;
-use Model\Vendedor;
+
 use Model\Blog;
+use MVC\Router;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager as Image;
 
-class PropiedadController {
-    public static function index(Router $router) {
-        
-        // Obtener todas las propiedades
-        $propiedades = Propiedad::all();
-
-        // Obtener los vendedores
-        $vendedores = Vendedor::all();
-
-        // Obtener los blogs
-        $blogs = Blog::all();
-
-        // Muestra mensaje condicional
-        $resultado = $_GET['resultado'] ?? null;
-        
-        $router->render('propiedades/admin', [
-            'propiedades' => $propiedades,
-            'resultado' => $resultado,
-            'vendedores' => $vendedores,
-            'blogs' => $blogs
-        ]);
-    }
-
+class BlogController {
     public static function crear(Router $router) {
        
-        $propiedad = new Propiedad;
-        $vendedores = Vendedor::all();
+        $blog = new Blog;
 
         // Arreglo con mensajes de errores
-        $errores = Propiedad::getErrores();
+        $errores = Blog::getErrores();
 
         // Ejecutar el código cuando el usuario envia el formulario
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $propiedad = new Propiedad($_POST['propiedad']);
+            $blog = new Blog($_POST['blog']);
 
             // Generar un nombre único para la imagen
             $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
@@ -50,14 +26,14 @@ class PropiedadController {
             // Setear la imagen
             // Realiza un resize a la imagen con intervention
             $imagen = null;
-            if($_FILES['propiedad']['tmp_name']['imagen']) {
+            if($_FILES['blog']['tmp_name']['imagen']) {
                 $manager = new Image(Driver::class);
-                $imagen = $manager->read($_FILES['propiedad']['tmp_name']['imagen'])->cover(800, 600);
-                $propiedad->setImagen($nombreImagen);
+                $imagen = $manager->read($_FILES['blog']['tmp_name']['imagen'])->cover(800, 600);
+                $blog->setImagen($nombreImagen);
             }
 
             // Validar
-            $errores = $propiedad->validar();
+            $errores = $blog->validar();
 
             // Revisar que no haya errores
             if(empty($errores)) {
@@ -71,13 +47,12 @@ class PropiedadController {
                 // Guarda la imagen en el servidor
                 $imagen->save(CARPETA_IMAGENES . $nombreImagen);
 
-                $propiedad->guardar();
+                $blog->guardar();
             } 
         }
 
-        $router->render('propiedades/crear', [
-            'propiedad' => $propiedad,
-            'vendedores' => $vendedores,
+        $router->render('blogs/crear', [
+            'blog' => $blog,
             'errores' => $errores
         ]);
     }
@@ -87,23 +62,20 @@ class PropiedadController {
         $id = validarORedireccionar('/admin');
 
         // Obtener datos de la propiedad
-        $propiedad = Propiedad::find($id);
-
-        // Consultar para obtener los vendedores
-        $vendedores = Vendedor::all();
+        $blog = Blog::find($id);
 
         // Arreglo con mensajes de errores
-        $errores = Propiedad::getErrores();
+        $errores = Blog::getErrores();
 
         // Ejecutar el código cuando el usuario envia el formulario
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Asignar los atributos de la propiedad
-            $args = $_POST['propiedad'];
-            $propiedad->sincronizar($args);
+            $args = $_POST['blog'];
+            $blog->sincronizar($args);
 
             // Validar
-            $errores = $propiedad->validar();
+            $errores = $blog->validar();
 
             /* Subida de Archivos*/
             // Generar un nombre único para la imagen
@@ -112,10 +84,10 @@ class PropiedadController {
             // Setear la imagen
             // Realiza un resize a la imagen con intervention
             $imagen = null;
-            if($_FILES['propiedad']['tmp_name']['imagen']) {
+            if($_FILES['blog']['tmp_name']['imagen']) {
                 $manager = new Image(Driver::class);
-                $imagen = $manager->read($_FILES['propiedad']['tmp_name']['imagen'])->cover(800, 600);
-                $propiedad->setImagen($nombreImagen);
+                $imagen = $manager->read($_FILES['blog']['tmp_name']['imagen'])->cover(800, 600);
+                $blog->setImagen($nombreImagen);
             }
 
             // Revisar que no haya errores
@@ -126,20 +98,19 @@ class PropiedadController {
                 }
 
                 // Insertar en la base de datos
-                $propiedad->guardar();
+                $blog->guardar();
             } 
         }
 
-        $router->render('propiedades/actualizar', [
-            'propiedad' => $propiedad,
-            'vendedores' => $vendedores,
+        $router->render('blogs/actualizar', [
+            'blog' => $blog,
             'errores' => $errores
         ]);
     }
 
-    public static function eliminar() {
+     public static function eliminar() {
 
-        // Eliminar propiedad
+        // Eliminar blog
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Validar el ID
@@ -153,8 +124,8 @@ class PropiedadController {
 
                 if(validarTipoContenido($tipo)) {
                     
-                    $propiedad = Propiedad::find($id);
-                    $propiedad->eliminar();
+                    $blog = Blog::find($id);
+                    $blog->eliminar();
                 }
             }
         }

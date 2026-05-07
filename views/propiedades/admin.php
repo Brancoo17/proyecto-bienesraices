@@ -1,7 +1,11 @@
 <?php
+use Model\Propiedad;
+use Model\Vendedor;
+use Model\Blog;
 /** @var string|null $resultado */
-/** @var \Model\Propiedad[] $propiedades */
-/** @var \Model\Vendedor[] $vendedores */
+/** @var Propiedad[] $propiedades */
+/** @var Vendedor[] $vendedores */
+/** @var Blog[] $blogs */
 ?>
 <main class="contenedor seccion">
     <h1>Administrador de Bienes Raices</h1>
@@ -19,7 +23,7 @@
 
     <a href="/propiedades/crear" class="boton boton-verde">Nueva Propiedad</a>
     <a href="/vendedores/crear" class="boton boton-azul">Nuevo Vendedor</a>
-    <a href="/blogs/crear" class="boton boton-violeta">Nuevo Blog</a>
+    <a href="/blogs/crear" class="boton boton-violeta">Nueva Entrada de Blog</a>
 
     <h2>Propiedades</h2>
 
@@ -79,6 +83,42 @@
                     <form method="POST" class="w-100" action="/vendedores/eliminar">
                         <input type="hidden" name="id" value="<?php echo $vendedor->id; ?>">
                         <input type="hidden" name="tipo" value="vendedor">
+                        <input type="submit" value="Eliminar" class="boton boton-rojo">
+                    </form>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <h2>Blogs</h2>
+
+    <table class="propiedades">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Imagen</th>
+                <th>Autor</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody> <!-- Mostrar los Resultados -->
+            <?php foreach($blogs as $blog): ?>
+            <tr>
+                <td><?php echo $blog->id; ?></td>
+                <td><?php echo $blog->titulo; ?></td>
+                <td><img src="/imagenes/<?php echo $blog->imagen; ?>" class="imagen-tabla"></td>
+                <td><?php echo $blog->nombreCreador; ?></td>
+                <td><?php echo $blog->creado; ?></td>
+                <td>
+                    <a href="/blogs/actualizar?id=<?php echo $blog->id; ?>" class="boton boton-amarillo">Actualizar</a>
+                        
+                    <form method="POST" class="w-100" action="/blogs/eliminar">
+                        <input type="hidden" name="id" value="<?php echo $blog->id; ?>">
+                        <input type="hidden" name="tipo" value="blog">
                         <input type="submit" value="Eliminar" class="boton boton-rojo">
                     </form>
                 </td>

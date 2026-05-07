@@ -1,23 +1,25 @@
+<?php
+/** @var \Model\Blog $blog */
+?>
+
 <main class="contenedor seccion contenido-centrado">
-    <h1>Guía para la Decoración de tu Hogar</h1>
+    <h1><?php echo $blog->titulo; ?></h1>
 
     <picture>
-        <source srcset="build/img/destacada2.webp" type="image/webp">
-        <source srcset="build/img/destacada2.jpg" type="image/jpeg">
-        <img loading="lazy" src="build/img/destacada2.jpg" alt="Imagen de la Propiedad">
+        <source srcset="/imagenes/<?php echo $blog->imagen; ?>" type="image/webp">
+        <source srcset="/imagenes/<?php echo $blog->imagen; ?>" type="image/jpeg">
+        <img loading="lazy" src="/imagenes/<?php echo $blog->imagen; ?>" alt="Imagen de la Propiedad">
     </picture>
 
-    <p class="info-meta">Escrito el: <span>20/2/2026</span> por: <span>Admin</span></p>
+    <p class="info-meta">Escrito el: <span><?php echo $blog->creado; ?></span> por: <span><?php echo $blog->nombreCreador; ?></span></p>
 
     <div class="resumen-propiedad">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, tempora exercitationem. 
-            Ipsum, qui provident praesentium iure repellendus tempore est et quibusdam maiores soluta 
-            labore cum in fuga, quae optio laboriosam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-            Similique fugit quod eaque autem beatae illum mollitia reprehenderit sit? Eum perspiciatis consequatur 
-            quod atque a optio, maxime itaque ipsam provident quae?</p>
-
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam beatae illo, nemo voluptatem accusantium 
-            vel itaque quisquam quae consectetur ipsa optio veritatis, quibusdam repudiandae quo praesentium! 
-            Qui pariatur a incidunt!</p>
+        <p><?php echo $blog->descripcion; ?></p>
     </div>
+
+    <div class="resumen-propiedad">
+        <p><?php echo $blog->texto; ?></p>
+    </div>
+
+    <a href="/blog" class="boton-verde">Volver</a>
 </main>
