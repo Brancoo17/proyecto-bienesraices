@@ -34,6 +34,7 @@ use Model\Blog;
                 <th>Título</th>
                 <th>Imagen</th>
                 <th>Precio</th>
+                <th>Vendedor</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -45,6 +46,12 @@ use Model\Blog;
                 <td><?php echo $propiedad->titulo; ?></td>
                 <td><img src="/imagenes/<?php echo $propiedad->imagen; ?>" class="imagen-tabla"></td>
                 <td>$<?php echo $propiedad->precio; ?></td>
+                <td>
+                    <?php 
+                        $vendedor = Vendedor::find($propiedad->vendedorId);
+                        echo $vendedor->nombre . " " . $vendedor->apellido;
+                    ?>
+                </td>
                 <td>
                     <a href="/propiedades/actualizar?id=<?php echo $propiedad->id; ?>" class="boton boton-amarillo">Actualizar</a>
                         
