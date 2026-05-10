@@ -2,7 +2,7 @@
 <main class="contenedor seccion">
     <h1>Conoce Sobre Nosotros</h1>
     <div class="contenido-nosotros">
-        <div class="imagen">
+        <div class="imagen-nosotros">
             <picture>
                 <source srcset="build/img/nosotros.webp" type="image/webp">
                 <source srcset="build/img/nosotros.jpg" type="image/jpeg">
@@ -13,15 +13,16 @@
         <div class="texto-nosotros">
             <blockquote>25 Años de Experiencia</blockquote>
 
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, tempora exercitationem. 
-                Ipsum, qui provident praesentium iure repellendus tempore est et quibusdam maiores soluta 
-                labore cum in fuga, quae optio laboriosam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                Similique fugit quod eaque autem beatae illum mollitia reprehenderit sit? Eum perspiciatis consequatur 
-                quod atque a optio, maxime itaque ipsam provident quae?</p>
+            <p>Durante más de dos décadas hemos ayudado a cientos de familias e inversores a encontrar la propiedad ideal. 
+                Nuestra experiencia en el mercado inmobiliario nos permite brindar un servicio profesional, transparente y enfocado 
+                en las necesidades de cada cliente.</p>
 
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam beatae illo, nemo voluptatem accusantium 
-                vel itaque quisquam quae consectetur ipsa optio veritatis, quibusdam repudiandae quo praesentium! 
-                Qui pariatur a incidunt!</p>
+            <p>Trabajamos con compromiso y dedicación en cada operación, acompañando a nuestros clientes desde 
+                la primera consulta hasta el cierre de la compra o venta. Nuestro objetivo es ofrecer asesoramiento confiable 
+                y hacer que todo el proceso sea más simple, seguro y eficiente.</p>
+
+            <p>Gracias a nuestra trayectoria, seguimos creciendo y construyendo relaciones basadas en la confianza, 
+                la responsabilidad y la satisfacción de quienes eligen trabajar con nosotros.</p>
         </div>
     </div>
 </main>

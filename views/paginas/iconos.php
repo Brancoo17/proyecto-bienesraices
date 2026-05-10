@@ -2,21 +2,23 @@
     <div class="icono">
         <img src="build/img/icono1.svg" alt="Icono Seguridad" loading="lazy">
         <h3>Seguridad</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti at ipsam autem 
-        iusto reprehenderit quae asperiores dolorum iste quisquam. Lorem ipsum dolor</p>
+        <p>Brindamos operaciones inmobiliarias seguras y transparentes, 
+            acompañando a nuestros clientes en cada etapa del proceso para garantizar 
+            confianza y tranquilidad al momento de comprar o vender una propiedad.</p>
     </div>
 
     <div class="icono">
         <img src="build/img/icono2.svg" alt="Icono Precio" loading="lazy">
         <h3>Precio</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti at ipsam autem 
-            iusto reprehenderit quae asperiores dolorum iste quisquam. Lorem ipsum dolor</p>
+        <p>Ofrecemos propiedades con precios competitivos y asesoramiento profesional para ayudarte 
+            a encontrar la mejor opción según tus necesidades y presupuesto.</p>
     </div>
 
     <div class="icono">
-        <img src="build/img/icono3.svg" alt="Icono Seguridad" loading="lazy">
+        <img src="build/img/icono3.svg" alt="Icono Tiempo" loading="lazy">
         <h3>A Tiempo</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti at ipsam autem 
-            iusto reprehenderit quae asperiores dolorum iste quisquam. Lorem ipsum dolor</p>
+        <p>Trabajamos con compromiso y eficiencia para agilizar cada gestión inmobiliaria,
+            <strong>asegurando respuestas rápidas y procesos organizados en todo momento.</strong>
+        </p>
     </div>
 </div>
