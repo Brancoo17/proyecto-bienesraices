@@ -31,3 +31,8 @@
   @include boton($violeta, inline-block);
   margin-left: 2rem;
 }
+
+.boton-naranja {
+  @include boton($naranja, inline-block);
+  margin-left: 2rem;
+}

@@ -2,10 +2,12 @@
 use Model\Propiedad;
 use Model\Vendedor;
 use Model\Blog;
+use Model\Admin;
 /** @var string|null $resultado */
 /** @var Propiedad[] $propiedades */
 /** @var Vendedor[] $vendedores */
 /** @var Blog[] $blogs */
+/** @var Admin[] $administradores */
 ?>
 <main class="contenedor seccion">
     <h1>Administrador de Bienes Raices</h1>
@@ -24,6 +26,7 @@ use Model\Blog;
     <a href="/propiedades/crear" class="boton boton-verde">Nueva Propiedad</a>
     <a href="/vendedores/crear" class="boton boton-azul">Nuevo Vendedor</a>
     <a href="/blogs/crear" class="boton boton-violeta">Nueva Entrada de Blog</a>
+    <a href="/auth/registro" class="boton boton-naranja">Nuevo Administrador</a>
 
     <h2>Propiedades</h2>
 
@@ -107,7 +110,6 @@ use Model\Blog;
                 <th>Título</th>
                 <th>Imagen</th>
                 <th>Autor</th>
-                <th>Fecha</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -119,13 +121,44 @@ use Model\Blog;
                 <td><?php echo $blog->titulo; ?></td>
                 <td><img src="/imagenes/<?php echo $blog->imagen; ?>" class="imagen-tabla"></td>
                 <td><?php echo $blog->nombreCreador; ?></td>
-                <td><?php echo $blog->creado; ?></td>
                 <td>
                     <a href="/blogs/actualizar?id=<?php echo $blog->id; ?>" class="boton boton-amarillo">Actualizar</a>
                         
                     <form method="POST" class="w-100" action="/blogs/eliminar">
                         <input type="hidden" name="id" value="<?php echo $blog->id; ?>">
                         <input type="hidden" name="tipo" value="blog">
+                        <input type="submit" value="Eliminar" class="boton boton-rojo">
+                    </form>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <h2>Administradores</h2>
+
+    <table class="propiedades">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody> <!-- Mostrar los Resultados -->
+            <?php foreach($administradores as $administrador): ?>
+            <tr>
+                <td><?php echo $administrador->id; ?></td>
+                <td><?php echo $administrador->nombre; ?></td>
+                <td><?php echo $administrador->email; ?></td>
+                <td>
+                    <a href="/auth/actualizar?id=<?php echo $administrador->id; ?>" class="boton boton-amarillo">Actualizar</a>
+                        
+                    <form method="POST" class="w-100" action="/auth/eliminar">
+                        <input type="hidden" name="id" value="<?php echo $administrador->id; ?>">
+                        <input type="hidden" name="tipo" value="administrador">
                         <input type="submit" value="Eliminar" class="boton boton-rojo">
                     </form>
                 </td>

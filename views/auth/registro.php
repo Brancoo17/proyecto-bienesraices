@@ -1,9 +1,9 @@
 <?php
-/** @var string[] $errores */
+    $errores ??= [];
 ?>
 
 <main class="contenedor seccion">
-    <h1>Registrar Vendedor</h1>
+    <h1>Registrar Administrador</h1>
 
     <a href="/admin" class="boton boton-verde">Volver</a>
 
@@ -13,11 +13,10 @@
         </div>
     <?php endforeach; ?>
 
-    <form class="formulario" method="POST" action="/vendedores/crear">
+    <form class="formulario" method="POST" action="/auth/registro">
         <?php include 'formulario.php'; ?>
 
-        <input type="submit" value="Registrar Vendedor" class="boton boton-verde">
+        <input type="submit" value="Registrar Administrador" class="boton boton-verde">
     </form>
-    
 
 </main>

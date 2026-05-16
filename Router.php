@@ -21,7 +21,7 @@ class Router {
         $auth = $_SESSION['login'] ?? null;
 
         // Arreglo de rutas protegidas
-        $rutasProtegidas = ['/admin', '/propiedades/crear', '/propiedades/actualizar', '/propiedades/eliminar', '/vendedores/crear', '/vendedores/actualizar', '/vendedores/eliminar'];
+        $rutasProtegidas = ['/admin', '/propiedades/crear', '/propiedades/actualizar', '/propiedades/eliminar', '/vendedores/crear', '/vendedores/actualizar', '/vendedores/eliminar', '/auth/registro', '/auth/actualizar', '/auth/eliminar'];
 
         // Identificar rutas
        $urlActual = $_SERVER['PATH_INFO'] ?? '/';

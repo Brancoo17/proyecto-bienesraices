@@ -6,18 +6,20 @@ class Admin extends ActiveRecord {
     
     // Base de Datos
     protected static string $tabla = 'usuarios';
-    protected static array $columnasDB = ['id', 'email', 'password'];
+    protected static array $columnasDB = ['id', 'email', 'password', 'nombre'];
 
     // Atributos
     public ?int $id;
     public string $email;
     public string $password;
+    public string $nombre;
 
     // Métodos
     public function __construct($args = []) {
         $this->id = $args['id'] ?? null;
-        $this->email = $args['email'] ?? '';
+        $this->email = trim($args['email'] ?? '');
         $this->password = $args['password'] ?? '';
+        $this->nombre = trim($args['nombre'] ?? '');
     }
 
     public function validar(): array {
@@ -74,6 +76,16 @@ class Admin extends ActiveRecord {
         $_SESSION['login'] = true;
 
         header('Location: /admin');
+    }
+
+    // Sobreescribir eliminar para no intentar eliminar imágenes
+    public function eliminar() {
+        $query = "DELETE FROM " . static::$tabla . " WHERE id = " . self::$db->escape_string($this->id) . " LIMIT 1";
+        $resultado = self::$db->query($query);
+
+        if($resultado) {
+            header("Location: /admin?resultado=3");
+        }
     }
 
 }

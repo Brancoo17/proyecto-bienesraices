@@ -1,3 +1,7 @@
+<?php
+/** @var \Model\Vendedor $vendedor */
+?>
+
 <fieldset>
     <legend>Información Personal</legend>
 

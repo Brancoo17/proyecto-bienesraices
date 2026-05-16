@@ -1,5 +1,5 @@
-<?php 
-    $errores = $errores ?? []; 
+<?php
+/** @var string[] $errores */
 ?>
 
 <main class="contenedor seccion contenido-centrado">

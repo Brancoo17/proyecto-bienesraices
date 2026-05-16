@@ -26,6 +26,13 @@ $router->get('/login', [LoginController::class, 'login']);
 $router->post('/login', [LoginController::class, 'login']);
 $router->get('/logout', [LoginController::class, 'logout']);
 
+// Rutas de los administradores
+$router->get('/auth/registro', [LoginController::class, 'registro']);
+$router->post('/auth/registro', [LoginController::class, 'registro']);
+$router->get('/auth/actualizar', [LoginController::class, 'actualizar']);
+$router->post('/auth/actualizar', [LoginController::class, 'actualizar']);
+$router->post('/auth/eliminar', [LoginController::class, 'eliminar']);
+
 /* Zona Privada */
 // Rutas de las propiedades
 $router->get('/admin', [PropiedadController::class, 'index']);

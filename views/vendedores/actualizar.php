@@ -1,3 +1,7 @@
+<?php
+/** @var string[] $errores */
+?>
+
 <main class="contenedor seccion">
     <h1>Actualizar Vendedor</h1>
 

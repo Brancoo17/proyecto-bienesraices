@@ -1,3 +1,8 @@
+<?php
+/** @var \Model\Propiedad $propiedad */
+/** @var \Model\Admin[] $vendedores */
+?>
+
 <fieldset>
     <legend>Información General</legend>
 

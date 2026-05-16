@@ -5,6 +5,7 @@ use MVC\Router;
 use Model\Propiedad;
 use Model\Vendedor;
 use Model\Blog;
+use Model\Admin;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager as Image;
 
@@ -20,6 +21,9 @@ class PropiedadController {
         // Obtener los blogs
         $blogs = Blog::all();
 
+        // Obtener los administradores
+        $administradores = Admin::all();
+
         // Muestra mensaje condicional
         $resultado = $_GET['resultado'] ?? null;
         
@@ -27,7 +31,8 @@ class PropiedadController {
             'propiedades' => $propiedades,
             'resultado' => $resultado,
             'vendedores' => $vendedores,
-            'blogs' => $blogs
+            'blogs' => $blogs,
+            'administradores' => $administradores
         ]);
     }
 
