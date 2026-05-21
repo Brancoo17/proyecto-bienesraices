@@ -9,27 +9,29 @@ class LoginController {
     public static function login(Router $router) {
         
         $errores = [];
+
+        $admin = new Admin;
         
         // Autenticar el usuario
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             
-            $auth = new Admin($_POST);
-            $errores = $auth->validar();
+            $admin->sincronizar($_POST);
+            $errores = $admin->validar();
 
             if(empty($errores)) {
                 // Verificar que el usuario existe
-                $resultado = $auth->existeUsuario();
+                $resultado = $admin->existeUsuario();
 
                 if(!$resultado) {
                     // Mensaje de error
                     $errores = Admin::getErrores();
                 } else {
                     // Verificar que el password es correcto
-                    $autenticado = $auth->comprobarPassword($resultado);
+                    $autenticado = $admin->comprobarPassword($resultado);
 
                     if($autenticado) {
                         // Autenticar el usuario
-                        $auth->autenticar();
+                        $admin->autenticar();
                     } else {
                         // Password incorrecto (mensaje de error)
                         $errores = Admin::getErrores();
@@ -39,7 +41,8 @@ class LoginController {
         }
 
         $router->render('auth/login', [
-            'errores' => $errores
+            'errores' => $errores,
+            'admin' => $admin
         ]);
     }
 

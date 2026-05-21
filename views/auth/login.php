@@ -1,5 +1,7 @@
 <?php
-/** @var string[] $errores */
+/** @var string[] $errores
+ * @var Model\Admin $admin
+ */
 ?>
 
 <main class="contenedor seccion contenido-centrado">
@@ -16,7 +18,7 @@
             <legend>Email y Password</legend>
 
             <label for="email">E-mail</label>
-            <input type="email" name="email" id="email" placeholder="Tu Email" >
+            <input type="email" name="email" id="email" placeholder="Tu Email" value="<?php echo s($admin->email); ?>" >
 
             <label for="password">Password</label>
             <input type="password" name="password" id="password" placeholder="Tu Password" >
